@@ -1,0 +1,55 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/25/2022  18:44:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\SquareWave_2k.obj TO .\Objects\SquareWave_2k PRINT (.\Listings\SquareWave_2k.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\SquareWave_2k.obj (SQUAREWAVE_2K)
+
+
+LINK MAP OF MODULE:  .\Objects\SquareWave_2k (SQUAREWAVE_2K)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0018H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\SquareWave_2k (SQUAREWAVE_2K)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SQUAREWAVE_2K
+  D:00A0H         SYMBOL        P2
+  C:0002H         SYMBOL        REPEAT
+  D:0088H         SYMBOL        TCON
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  C:000EH         SYMBOL        WAIT
+  C:0000H         LINE#         2
+  C:0002H         LINE#         3
+  C:0005H         LINE#         4
+  C:0008H         LINE#         5
+  C:000BH         LINE#         6
+  C:000EH         LINE#         7
+  C:0011H         LINE#         8
+  C:0013H         LINE#         9
+  C:0016H         LINE#         10
+  -------         ENDMOD        SQUAREWAVE_2K
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0018H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=24
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

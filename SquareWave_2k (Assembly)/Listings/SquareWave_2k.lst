@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  SQUAREWAVE_2K                                                        11/25/2022 18:43:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SquareWave_2k.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SquareWave_2k.s SET(SMALL) DEBUG PRINT(.\Listings\SquareWave_2k.lst) OB
+                      JECT(.\Objects\SquareWave_2k.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 C2A0              2     CLR P2.0                
+0002 758901            3     Repeat: MOV TMOD,#01H ;Timer 0 Mode 1 (16-bit)
+0005 758A14            4                                     MOV TL0,#14H    ;Count = 250 ticks = 0xFA, tick = 1us, half
+                             Period=0.25ms
+0008 758CFF            5                                     MOV TH0,#0FFH   ;Up Counter -> FFFF - FA = FF05H + FH to co
+                             mpensate the time of instructions
+000B 758810            6                                     MOV TCON,#10H   ;Start Timer
+000E 308DFD            7     Wait:   JNB TCON.5,Wait ;Continue if 0.25 ms didn't pass
+0011 B2A0              8                             CPL P2.0        ;Square Wave (if zero flip to one and so on)
+0013 758800            9                             MOV TCON,#00H   ;Stop Timer
+0016 80EA             10                             SJMP Repeat     ;Infinite Loop Produces a Square Wave of f=2kHz
+                      11     END
+A51 MACRO ASSEMBLER  SQUAREWAVE_2K                                                        11/25/2022 18:43:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P2 . . . . . . . .  D ADDR   00A0H   A   
+REPEAT . . . . . .  C ADDR   0002H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+WAIT . . . . . . .  C ADDR   000EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

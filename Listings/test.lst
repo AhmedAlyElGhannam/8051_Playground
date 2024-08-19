@@ -1,0 +1,69 @@
+A51 MACRO ASSEMBLER  TEST                                                                 11/23/2022 21:12:50 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\test.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE test.s SET(SMALL) DEBUG PRINT(.\Listings\test.lst) OBJECT(.\Objects\tes
+                      t.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+  0033                 3     LB EQU 33H
+  00FF                 4     HB EQU 0FFH
+                       5     
+0000 74FF              6     TEST: MOV A,#0FFH
+0002 F540              7                             MOV 40H,A
+0004 F541              8                             MOV 41H,A
+                       9     
+0006 7400             10                             MOV A,#0H
+0008 F542             11                             MOV 42H,A
+000A F543             12                             MOV 43H,A
+                      13     
+000C E541             14     HIGHER: MOV A,41H ;higher
+000E 3543             15                                     ADDC A,43H
+0010 F545             16                                     MOV 45H,A
+                      17     
+0012 B4FF0D           18                                     CJNE A,#HB,CLEAR ;jump to clear if not equal
+                      19     
+0015 E540             20     LOWER: MOV A,40H ;lower
+0017 2542             21                              ADD A,42H
+0019 F544             22                              MOV 44H,A
+                      23                              
+001B C3               24                              CLR C
+001C 9433             25                              SUBB A,#LB
+001E 4002             26                              JC CLEAR
+0020 5005             27                              JNC HERE
+                      28     
+0022 E4               29     CLEAR: CLR A
+0023 F544             30                              MOV 44H,A
+0025 F545             31                              MOV 45H,A
+                      32     
+0027 80FE             33     HERE: JMP HERE
+                      34     END
+                                     
+                                     
+                                     
+                                     
+A51 MACRO ASSEMBLER  TEST                                                                 11/23/2022 21:12:50 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CLEAR. . . . . . .  C ADDR   0022H   A   
+HB . . . . . . . .  N NUMB   00FFH   A   
+HERE . . . . . . .  C ADDR   0027H   A   
+HIGHER . . . . . .  C ADDR   000CH   A   
+LB . . . . . . . .  N NUMB   0033H   A   
+LOWER. . . . . . .  C ADDR   0015H   A   
+TEST . . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

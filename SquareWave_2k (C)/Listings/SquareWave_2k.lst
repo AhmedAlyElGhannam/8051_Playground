@@ -1,0 +1,73 @@
+C51 COMPILER V9.54   SQUAREWAVE_2K                                                         11/25/2022 18:46:50 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE SQUAREWAVE_2K
+OBJECT MODULE PLACED IN .\Objects\SquareWave_2k.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE SquareWave_2k.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\SquareWave_2k.lst) TABS(2) OBJECT(.\Objects\SquareWave_2k.obj)
+
+line level    source
+
+   1          /*8051 library*/
+   2          #include <reg51.h>
+   3          
+   4          /*macros*/
+   5          #define TRUE 1
+   6          /*defining delay time*/
+   7          #define DELAY_L 0X17  /*added 12H to compensate instruction time*/
+   8          #define DELAY_H 0XFF
+   9          
+  10          /*define delay function*/
+  11          void T0_delay(void);
+  12          
+  13          /*define output pin*/
+  14          sbit sqWave = P2^0;
+  15          
+  16          void main(void)
+  17          {
+  18   1        sqWave = 0;
+  19   1        while(TRUE)
+  20   1        {
+  21   2          sqWave = 1;
+  22   2          T0_delay();
+  23   2          sqWave = 0;
+  24   2          T0_delay();
+  25   2        }
+  26   1      }
+  27          
+  28          void T0_delay(void)
+  29          {
+  30   1        /*Configure mode 1 for T0*/
+  31   1        TMOD = 0X01;
+  32   1        
+  33   1        /*Setting delay values in TL0 and TH0*/
+  34   1        TL0 = DELAY_L;
+  35   1        TH0 = DELAY_H;
+  36   1        
+  37   1        /*Start timer 0*/
+  38   1        TR0 = 1;
+  39   1        
+  40   1        /*Loop until timer stops*/
+  41   1        while(TF0 == 0);
+  42   1        
+  43   1        /*Stops timer*/
+  44   1        TR0 = 0;
+  45   1        TF0 = 0;
+  46   1      }
+  47          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     33    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   SQUAREWAVE_2K                                                         11/25/2022 18:46:50 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

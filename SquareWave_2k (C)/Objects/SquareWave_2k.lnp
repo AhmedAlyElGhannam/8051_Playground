@@ -1,0 +1,3 @@
+".\Objects\SquareWave_2k.obj" 
+TO ".\Objects\SquareWave_2k" 
+PRINT(".\Listings\SquareWave_2k.m51")
